@@ -10,7 +10,36 @@ $("#xxx div:last-child").remove();
 
 ##### 取消radio的选择状态
 
-```
+```js
 $("input[name='xxx']").removeAttr("checked");
 ```
 
+##### 点击按钮改变颜色
+
+```javascript
+var lsNum = 1;
+//条件查询
+function clean(num) {
+    if (num != null && num !== '') {
+        // 返回原颜色
+        if (lsNum !== num) {
+            $("#searchName").val("");
+            document.getElementById("num" + lsNum).style.background = "#009688";
+        }
+        lsNum = num;
+        // 修改颜色
+        document.getElementById("num" + num).style.background = "#5FB878";
+    } else {
+        if (lsNum !== 0) {
+            num = lsNum;
+        }
+    }
+    var searchName = $("#searchName").val().trim();
+    var tuhaoProductNoFF = {
+        "num": num,
+        "searchName": searchName
+    };
+    $("#tuhaoDataGrid").datagrid('reload', tuhaoProductNoFF);
+    $("#cls").click();
+}
+```
