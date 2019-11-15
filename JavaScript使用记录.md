@@ -45,3 +45,13 @@ function clean(num) {
 ```
 
 还是用原生的js方法好用，jq感觉很多方法不灵的。
+
+##### Select2取（多个）选中项的值：
+
+这里的val对应后端设置的id
+
+返回值是一个list集合
+
+```js
+var valList = $("#xxx").select2('val');
+```
