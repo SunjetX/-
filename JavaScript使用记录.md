@@ -4,15 +4,23 @@
 $("#xxx div:last-child").remove();
 ```
 
+
+
 ##### js里可以用c:foreach，惊了
 
+
+
 ##### 在js里最好只用单引号进行html的拼接
+
+
 
 ##### 取消radio的选择状态
 
 ```js
 $("input[name='xxx']").removeAttr("checked");
 ```
+
+
 
 ##### 点击按钮改变颜色
 
@@ -46,7 +54,8 @@ function clean(num) {
 
 还是用原生的js方法好用，jq感觉很多方法不灵的。
 
-<<<<<<< HEAD
+
+
 ##### Ajax传递数组
 
 ```javascript
@@ -55,7 +64,9 @@ traditional: true
 ```
 
 dataType:"json"  不写
-=======
+
+
+
 ##### Select2取（多个）选中项的值：
 
 这里的val对应后端设置的id
@@ -65,4 +76,3 @@ dataType:"json"  不写
 ```js
 var valList = $("#xxx").select2('val');
 ```
->>>>>>> 834423ba9ff27a940e10516d998fd802c8fca453
