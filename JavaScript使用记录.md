@@ -45,3 +45,12 @@ function clean(num) {
 ```
 
 还是用原生的js方法好用，jq感觉很多方法不灵的。
+
+##### Ajax传递数组
+
+```javascript
+data: {ids: ids},
+traditional: true
+```
+
+dataType:"json"  不写
