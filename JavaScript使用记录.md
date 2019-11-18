@@ -76,3 +76,18 @@ dataType:"json"  不写
 ```js
 var valList = $("#xxx").select2('val');
 ```
+
+
+
+##### Select取多个选中的title：
+
+```javascript
+var select = document.getElementById("chooseTuhaoSelect2");
+var pros = [];
+for (i = 0; i < select.length; i++) {
+    if (select.options[i].selected) {
+        pros.push(select[i].title);
+    }
+}
+```
+
