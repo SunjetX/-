@@ -91,3 +91,7 @@ for (i = 0; i < select.length; i++) {
 }
 ```
 
+
+
+##### 具有 true 和 false 两个属性的属性，如 checked, selected 或者 disabled 使用prop()，其他的使用 attr()
+
