@@ -100,3 +100,38 @@ $('input:checkbox[name="xxx"]').each(function (i) {   		       $(this).prop("che
 })
 ```
 
+
+
+##### 遍历input中class包含"pnameList"的值，并添加到数组
+
+```javascript
+$('input[class*="pnameList"]').each(function (i) {
+	if ($(this).is(":checked")) {
+		lnames.push($(this).val());
+		pros.push($(this).val());
+	}
+});
+```
+
+
+
+##### forEach遍历数组，把input中class包含"pnameList"的相同的值勾选（checkbox）
+
+```javascript
+var lname = '${tuhaoProductGGD.lname}';
+if (lname != null && lname != '' && lname != undefined) {
+	var lnames = lname.split(",");
+	lnames.forEach(function (i) {
+        $("input[class*='pnameList']").each(function (j) {
+            if ($(this).val() == i.trim().toString()) {
+                $(this).prop("checked", "checked");
+            }        
+        })
+	})
+}
+```
+
+
+
+##### Select2在回显的时候，由于select框中没有值，需要先在页面中取值（数据来源后端）
+
