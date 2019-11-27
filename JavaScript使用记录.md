@@ -138,3 +138,5 @@ if (lname != null && lname != '' && lname != undefined) {
 ##### 在html事件中（如onclick）调用js方法时，如果参数使用el表达式取值，那么这个参数需要加上单引号''，否则会出现错误：Uncaught SyntaxError: Invalid or unexpected token。2019.11.20
 
 ##### js报错：xxx is not a function  	这时候试着换一个方法命名，今天方法名用了downImg报错，但是改掉就好了。2019.11.20
+
+##### <c:set var="indexNum" value="${out.index}${inner.index}"/>在el表达式内无法做数据类型转换，可以用c:set。
