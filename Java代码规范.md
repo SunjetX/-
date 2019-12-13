@@ -11,6 +11,3 @@
 ![1576220396899](C:\Users\user\AppData\Roaming\Typora\typora-user-images\1576220396899.png)
 
 ![1576220465475](C:\Users\user\AppData\Roaming\Typora\typora-user-images\1576220465475.png)
-
-![1576220911541](C:\Users\user\AppData\Roaming\Typora\typora-user-images\1576220911541.png)
-
