@@ -158,3 +158,14 @@ $(function () {
 ##### EasyUI的queryParams属性只在进入页面的时候生效一次，如果在同一页面进行了其它操作，使页面重新加载了一次（如搜索），那么这个属性会失效。
 
 ##### xxx is not a function：需要注意的是：id不能与函数名相同。
+
+##### 扩大a标签的点击范围
+
+```css
+a {
+    line-height: 50px;    
+    display: inline-block;    
+    width: 100%;
+}
+```
+
