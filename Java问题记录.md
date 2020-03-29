@@ -215,3 +215,13 @@ a {
 
 **通过JSON从后端穿前端的过程中被修改了属性名大小写怎么办：在实体的属性上添加@JsonProperty("xxx")**
 
+
+
+**js日期格式化，去掉时分秒**
+
+```
+formatter: function (value, row, index) {
+	return /\d{4}-\d{1,2}-\d{1,2}/g.exec(value);
+}
+```
+
