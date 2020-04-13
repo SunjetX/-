@@ -225,3 +225,42 @@ formatter: function (value, row, index) {
 }
 ```
 
+
+
+**SQL中查询数据，如果为null则自定义返回的值，类似三元表达式**
+
+```SQL
+isnull(value1, value2)
+value1为列名，value2为替换后的值。如：
+isnull(name, '佚名')
+意思是如果name为空的话，就返回佚名。
+```
+
+
+
+##### Cause: com.microsoft.sqlserver.jdbc.SQLServerException: 数据类型 varchar 和 varbinary 在 add 运算符中不兼容
+
+'%' + searchName + '%'	通常是这里出了问题
+
+
+
+##### SQL中有or的条件需要格外注意括号
+
+
+
+##### RequiresPermissions多个权限只需满足其中一项写法：
+
+```java
+@RequiresPermissions(value = {"tuhao_main_isbz", "tuhao_sh_isbz"}, logical = Logical.OR)
+```
+
+
+
+**IDEA设置忽略文件的方法**
+
+首先，未被纳入版本控制的文件，可以在.ignore文件中预先配置好忽略；
+
+其次，如果已经被纳入版本控制，但是不希望修改之后被提交的，就创建一个changelist用来放这些文件。
+
+
+
