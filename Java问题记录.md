@@ -264,3 +264,12 @@ isnull(name, '佚名')
 
 
 
+##### 存在即更新，不存在则插入
+
+```
+if not exists (select * from current_stock where cinv_code = #{cinvCode} and c_wh_code = #{cWhCode} and del_flag = 0)      
+		insert into current_stock(cinv_code, i_quantity, c_wh_code, create_by, create_date, update_by, update_date) values(#{cinvCode}, #{iQuantity}, #{cWhCode}, #{updateBy}, #{updateDate}, #{updateBy}, #{updateDate})   
+else
+		update current_stock set i_quantity = i_quantity + #{iQuantity}, update_by = #{updateBy}, update_date = #{updateDate} where cinv_code = #{cinvCode} and c_wh_code = #{cWhCode} and del_flag = 0
+```
+
