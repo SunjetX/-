@@ -273,3 +273,32 @@ else
 		update current_stock set i_quantity = i_quantity + #{iQuantity}, update_by = #{updateBy}, update_date = #{updateDate} where cinv_code = #{cinvCode} and c_wh_code = #{cWhCode} and del_flag = 0
 ```
 
+
+
+##### Mybatis插入后返回id
+
+标签中添加属性，keyProperty="id" useGeneratedKeys="true"，插入后直接返回给传进来的对象
+
+
+
+##### ajax避免重复提交
+
+```javascript
+beforeSend: function () {
+	$("#submitButton").attr("disabled", true);
+},
+complete: function () {
+	$("#submitButton").removeAttr("disabled");
+}
+```
+
+
+
+##### easyUI清除勾选状态
+
+```
+onLoadSuccess:function(data){
+	$('#dataGrid').datagrid('clearChecked');
+}
+```
+
