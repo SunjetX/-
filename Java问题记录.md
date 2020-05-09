@@ -306,4 +306,4 @@ onLoadSuccess:function(data){
 
 ##### 如果遇到JSON字段丢失的问题
 
-在属性上加@JsonField(name = "")
+在属性上加@JsonProperty("")
