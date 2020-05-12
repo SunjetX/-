@@ -8,6 +8,8 @@ $("#xxx div:last-child").remove();
 
 ##### js里可以用c:foreach
 
+需要注意的是：标签中的el表达式正常写，不需要加引号；但是取值的时候必须要加上引号！！！否则显示的将是一个类似序号或者地址值的数字。
+
 
 
 ##### 在js里最好只用单引号进行html的拼接，不然会出现莫名其妙的错误。
@@ -322,3 +324,10 @@ onLoadSuccess:function(data){
 ##### 如果遇到JSON字段丢失的问题
 
 在属性上加@JsonProperty("")
+
+
+
+##### @Transactional(rollbackFor = Exception.class)
+
+可以扩大事务控制的范围（Exception包括了RuntimeException和非运行时异常如：SQL、IOExeption等），如果不在括号里指定，默认是RuntimeException。
+
