@@ -331,3 +331,8 @@ onLoadSuccess:function(data){
 
 可以扩大事务控制的范围（Exception包括了RuntimeException和非运行时异常如：SQL、IOExeption等），如果不在括号里指定，默认是RuntimeException。
 
+
+
+##### Select2既可以查询又可以输入
+
+tags: true
