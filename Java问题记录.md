@@ -336,3 +336,48 @@ onLoadSuccess:function(data){
 ##### Select2既可以查询又可以输入
 
 tags: true
+
+
+
+**layer.open首次打开不居中的问题**
+
+通过css解决的方案：
+
+```javascript
+layer.style(index, {
+	left: '50%', 
+	position: 'absolute', 
+	top: '50%', 
+	transform: 'translate(-50%, -50%)'
+});
+```
+
+
+
+**js加锁防止重复提交**
+
+```
+var lock = false;
+if (!lock) {
+    lock = true;
+    执行代码...
+}
+```
+
+
+
+**javaScript只允许输入数字和小数点**
+
+```
+onpropertychange="if(/[^0-9.]/g.test(value))value=value.replace(/[^0-9.]/g,'')"
+```
+
+
+
+**javaScript只允许输入数字**
+
+```
+onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^0-9.]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^0-9.]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+```
+
