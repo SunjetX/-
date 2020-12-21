@@ -381,3 +381,147 @@ onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^0-9.]/g,'')}e
 onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^0-9.]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
 ```
 
+
+
+**限制输入**
+
+```
+// 判断只能输入纯数字或者小数点，及负整数
+        function clearNoNum(event, obj) {
+            //响应鼠标事件，允许左右方向键移动
+            event = window.event || event;
+            if (event.keyCode == 37 | event.keyCode == 39) {
+                return;
+            }
+            var t = obj.value.charAt(0);
+            //先把非数字的都替换掉，除了数字和.
+            obj.value = obj.value.replace(/[^\d.]/g, "");
+            //必须保证第一个为数字而不是.
+            obj.value = obj.value.replace(/^\./g, "");
+            //保证只有出现一个.而没有多个.
+            obj.value = obj.value.replace(/\.{2,}/g, ".");
+            //保证.只出现一次，而不能出现两次以上
+            obj.value = obj.value.replace(".", "$#$").replace(/\./g, "").replace("$#$", ".");
+            //如果第一位是负号，则允许添加   如果不允许添加负号 可以把这块注释掉
+             if (t == '-') {
+                 obj.value = '-' + obj.value;
+             }
+        }
+        
+ // 限制数字位数
+        function numSizeLimit(th) {
+            var regStrs = [
+                ['^(\\d+\\.\\d{1}).+', '$2'] //禁止录入小数点后2位以上
+            ];
+            for (var i = 0; i < regStrs.length; i++) {
+                var reg = new RegExp(regStrs[i][0]);
+                th.value = th.value.replace(reg, regStrs[i][1]);
+            }
+        }
+```
+
+
+
+**日期格式转换**
+
+```
+	/**
+     * 日期格式转换
+     */
+    function dateFormater(value) {
+        var str = '';
+        if (value != undefined && value != null) {
+            var dt = new Date();
+            dt.setTime(value);
+            var year = dt.getFullYear();//查询年份
+            var month = dt.getMonth() + 1;//查询月份
+            if (Number(month) < 10) {
+                month = '0' + month;
+            }
+            var date = dt.getDate();//查询当月日期
+            if (Number(date) < 10) {
+                date = '0' + date;
+            }
+            str = year + "-" + month + "-" + date;
+        }
+        return str;
+    }
+```
+
+
+
+**格式化日期（去掉时分秒）**
+
+```
+/\d{4}-\d{1,2}-\d{1,2}/g.exec(date);
+```
+
+
+
+**格式化数字**
+
+```
+// 格式化数字 千分位
+    function fmoney(s, n) {
+        n = n > 0 && n <= 20 ? n : 2;
+        s = parseFloat((s + "").replace(/[^\d\.-]/g, "")).toFixed(n) + "";
+        var l = s.split(".")[0].split("").reverse(),
+            r = s.split(".")[1];
+        var t = "";
+        for (var i = 0; i < l.length; i++) {
+            t += l[i] + ((i + 1) % 3 == 0 && (i + 1) != l.length ? "," : "");
+        }
+        return t.split("").reverse().join("") + "." + r;
+    }
+```
+
+
+
+**生成从minNum到maxNum的随机数**
+
+```
+function randomNum(minNum, maxNum) {
+        switch (arguments.length) {
+            case 1:
+                return parseInt(Math.random() * minNum + 1, 10);
+            case 2:
+                return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
+            default:
+                return 0;
+        }
+    }
+```
+
+
+
+**EasyUI隐藏列**
+
+```
+$('#dataGrid').datagrid('hideColumn', 'state');
+```
+
+
+
+**select2回显数据**
+
+```
+ // 回显数据
+    function echoSelect2(dom, value) {
+        $.each(value, function (index, value) {
+            $(dom).append(new Option(value.text, value.id, false, true));
+        });
+        $(dom).trigger("change");
+    }
+    
+// value 格式 及 调用方法
+	var select2Val = [{id: ccuscode, text: ccuscode + " [" + ccusname + "]"}];
+	echoSelect2($("#select2"), select2Val);
+```
+
+
+
+**select2获取选中text**
+
+```
+$(this).select2("data")[0].text;
+```
