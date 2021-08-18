@@ -8,7 +8,7 @@ $("#xxx div:last-child").remove();
 
 ##### js里可以用c:foreach
 
-需要注意的是：标签中的el表达式正常写，不需要加引号；但是取值的时候必须要加上引号！！！否则显示的将是一个类似序号或者地址值的数字。
+需要注意的是：标签中的el表达式正常写，不需要加引号；[但是取值的时候必须要加上引号]()！！！否则显示的将是一个类似序号或者地址值的数字。
 
 
 
@@ -131,6 +131,7 @@ if (lname != null && lname != '' && lname != undefined) {
         })
 	})
 }
+
 ```
 
 
@@ -163,6 +164,7 @@ $(function () {
     });
     $("#sortable").disableSelection();
 });
+
 ```
 
 
@@ -183,6 +185,7 @@ a {
     display: inline-block;    
     width: 100%;
 }
+
 ```
 
 
@@ -220,6 +223,7 @@ a {
     ORDER BY
     a.id DESC
 </select>
+
 ```
 
 **SQL中设置变量：DECLARE @prefix VARCHAR(50);set @prefix = '10%';**
@@ -240,6 +244,7 @@ a {
 formatter: function (value, row, index) {
 	return /\d{4}-\d{1,2}-\d{1,2}/g.exec(value);
 }
+
 ```
 
 
@@ -251,6 +256,7 @@ isnull(value1, value2)
 value1为列名，value2为替换后的值。如：
 isnull(name, '佚名')
 意思是如果name为空的话，就返回佚名。
+
 ```
 
 
@@ -269,6 +275,7 @@ isnull(name, '佚名')
 
 ```java
 @RequiresPermissions(value = {"tuhao_main_isbz", "tuhao_sh_isbz"}, logical = Logical.OR)
+
 ```
 
 
@@ -288,6 +295,7 @@ if not exists (select * from current_stock where cinv_code = #{cinvCode} and c_w
 		insert into current_stock(cinv_code, i_quantity, c_wh_code, create_by, create_date, update_by, update_date) values(#{cinvCode}, #{iQuantity}, #{cWhCode}, #{updateBy}, #{updateDate}, #{updateBy}, #{updateDate})   
 else
 		update current_stock set i_quantity = i_quantity + #{iQuantity}, update_by = #{updateBy}, update_date = #{updateDate} where cinv_code = #{cinvCode} and c_wh_code = #{cWhCode} and del_flag = 0
+
 ```
 
 
@@ -307,6 +315,7 @@ beforeSend: function () {
 complete: function () {
 	$("#submitButton").removeAttr("disabled");
 }
+
 ```
 
 
@@ -317,6 +326,7 @@ complete: function () {
 onLoadSuccess:function(data){
 	$('#dataGrid').datagrid('clearChecked');
 }
+
 ```
 
 
@@ -350,6 +360,7 @@ layer.style(index, {
 	top: '50%', 
 	transform: 'translate(-50%, -50%)'
 });
+
 ```
 
 
@@ -362,6 +373,7 @@ if (!lock) {
     lock = true;
     执行代码...
 }
+
 ```
 
 
@@ -369,7 +381,8 @@ if (!lock) {
 **javaScript只允许输入数字和小数点**
 
 ```
-onpropertychange="if(/[^0-9.]/g.test(value))value=value.replace(/[^0-9.]/g,'')"
+oninput="if(/[^0-9.]/g.test(value))value=value.replace(/[^0-9.]/g,'')"
+
 ```
 
 
@@ -379,6 +392,7 @@ onpropertychange="if(/[^0-9.]/g.test(value))value=value.replace(/[^0-9.]/g,'')"
 ```
 onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^0-9.]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
 onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^0-9.]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+
 ```
 
 
@@ -418,6 +432,7 @@ onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^0-9.]/g,
                 th.value = th.value.replace(reg, regStrs[i][1]);
             }
         }
+
 ```
 
 
@@ -446,6 +461,7 @@ onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^0-9.]/g,
         }
         return str;
     }
+
 ```
 
 
@@ -454,6 +470,7 @@ onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^0-9.]/g,
 
 ```
 /\d{4}-\d{1,2}-\d{1,2}/g.exec(date);
+
 ```
 
 
@@ -473,6 +490,7 @@ onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^0-9.]/g,
         }
         return t.split("").reverse().join("") + "." + r;
     }
+
 ```
 
 
@@ -490,21 +508,23 @@ function randomNum(minNum, maxNum) {
                 return 0;
         }
     }
+
 ```
 
 
 
 **EasyUI隐藏列**
 
-```
+```js
 $('#dataGrid').datagrid('hideColumn', 'state');
+
 ```
 
 
 
 **select2回显数据**
 
-```
+```js
  // 回显数据
     function echoSelect2(dom, value) {
         $.each(value, function (index, value) {
@@ -522,6 +542,372 @@ $('#dataGrid').datagrid('hideColumn', 'state');
 
 **select2获取选中text**
 
-```
+```js
 $(this).select2("data")[0].text;
+```
+
+
+
+**select2删除选中项**
+
+```js
+$(this).val(null).trigger("change");
+```
+
+
+
+**js对象转url参数**
+
+```js
+/**
+     * param 将要转为URL参数字符串的对象
+     * key URL参数字符串的前缀
+     * encode true/false 是否进行URL编码,默认为true
+     *
+     * return URL参数字符串
+     */
+    var urlEncode = function (param, key, encode) {
+        if (param == null) return '';
+        var paramStr = '';
+        var t = typeof (param);
+        if (t == 'string' || t == 'number' || t == 'boolean') {
+            paramStr += '&' + key + '=' + ((encode == null || encode) ? encodeURIComponent(param) : param);
+        } else {
+            for (var i in param) {
+                var k = key == null ? i : key + (param instanceof Array ? '[' + i + ']' : '.' + i);
+                paramStr += urlEncode(param[i], k, encode);
+            }
+        }
+        return paramStr;
+    };
+
+```
+
+
+
+**js遍历时判断两个元素是否是同一个**
+
+```js
+$(dom).is($(this)
+```
+
+
+
+**radio选中**
+
+```js
+$("input:radio[name='isfg']").change(function () {
+                if ($("#isfg1").is(":checked")) {
+                    $("td[data-fgtuhao]").show();
+                }
+                if ($("#isfg0").is(":checked")) {
+                    $("td[data-fgtuhao]").hide();
+                }
+            });
+```
+
+
+
+**清空select2**
+
+```js
+$("#tuhaos").val('').trigger("change");
+```
+
+
+
+**取消选中radio**
+
+```js
+$("input:radio[name='isfg']").prop("checked", false);
+```
+
+
+
+**获取选中radio**
+
+```js
+$("input:radio[name='isfg']:checked").val();
+```
+
+
+
+**批量insert**
+
+insert into xxx (xx,xx)
+
+select xx,xx from xxx
+
+
+
+**限制输入0-100**
+
+```js
+oninput="if(value>100){value=100}else{value=value.replace(/[^\d]/g,'')}if(value.indexOf(0)==0){value=0}"
+```
+
+
+
+**ajax传递list对象**
+
+```js
+data["yfMarkList[" + i + "].id"] = id;
+ajax中data: data
+```
+
+
+
+**sqlserver获取年月**
+
+```CONVERT(varchar(30), GETDATE(), 120)```
+
+
+
+**checkbox是否被选中**
+
+```$("#abc").is(':checked');   ```
+
+
+
+**sqlserver日期忽略时分秒**
+
+convert(date, created_date, 23)
+
+
+
+**layui年月范围选择**
+
+```js
+//年月范围选择
+        laydate.render({
+            elem: '#rangeTime'
+            , trigger: 'click'
+            , range: '~' //或 range: '~' 来自定义分割字符
+            , done: function (value, date, endDate) {
+                let times = value.split('~');
+                $("#beginTime").val(times[0].trim());
+                $("#endTime").val(times[1].trim());
+            }
+        });
+```
+
+
+
+**Object转BigDecimal**
+
+```java
+private static BigDecimal getBigDecimal(Object value) {
+        BigDecimal ret = null;
+        if (value != null) {
+            if (value instanceof BigDecimal) {
+                ret = (BigDecimal) value;
+            } else if (value instanceof String) {
+                ret = new BigDecimal((String) value);
+            } else if (value instanceof BigInteger) {
+                ret = new BigDecimal((BigInteger) value);
+            } else if (value instanceof Number) {
+                ret = new BigDecimal(((Number) value).doubleValue());
+            } else {
+                throw new ClassCastException("Not possible to coerce [" + value + "] from class " + value.getClass() + " into a BigDecimal.");
+            }
+        }
+        return ret;
+    }
+```
+
+
+
+**使用tooltip提示框**
+
+```js
+ html：
+ 	data-toggle="tooltip"
+ js：
+     $('[data-toggle="tooltip"]').tooltip({
+        trigger: 'hover',
+        placement: 'left'
+     });
+ css：(底色改为白色，字体改为黑色)
+	 .tooltip-inner {
+            max-width: 200px;
+            padding: 3px 8px;
+            color: #000;
+            text-align: center;
+            background-color: #fff;
+            border-radius: 4px;
+        }
+```
+
+
+
+**使用css控制td的高度和宽度，不能控制td，应该在td中再嵌套一个div，通过控制这个div间接控制td的大小**
+
+```css
+.hideContent {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 200px;
+    height: 40px;
+}
+```
+
+
+
+**给div增加滚动条**(css)
+
+```
+overflow:auto
+```
+
+
+
+**laydate选择年月**
+
+```js
+laydate.render({
+            elem: '#jhfkDate'
+            , type: 'month'
+            , trigger: 'click'
+            , btns: ['clear', 'confirm']
+            , min: getyyMM(1)
+            , change: function (value, date) {
+                $("#jhskDate").val(value);
+            }
+            , ready: function (date) {
+                $(".layui-laydate").off('click').on('click', '.layui-laydate-list li', function () {
+                    $(".layui-laydate").remove();
+                });
+            }
+        });
+        
+  function getyyMM(range) {
+        //创建日期对象
+        var date = new Date();
+
+        //获取年份
+        var yy = date.getFullYear();
+
+        //获取月份
+        // 默认选中的
+        var mm = "";
+        if (range == 1) {
+            mm = date.getMonth() + 1;
+        }
+        if (range == 2) {
+            mm = date.getMonth() + 2;
+        }
+        // 允许选中的最大值
+        if (range == 3) {
+            mm = date.getMonth() + 4;
+        }
+        // 如果月份小于10 前面加0
+        mm = (mm < 10 ? "0" + mm : mm);
+        // 如果月份大于12 年+1; 月份-12
+        yy = mm > 12 ? yy + 1 : yy;
+        mm = mm > 12 ? mm - 12 : mm;
+
+        //返回日期
+        var time = '';
+        if (range == 1) {
+            time = yy.toString() + "-" + mm.toString();
+        }
+        if (range == 2 || range == 3) {
+            time = yy.toString() + "-" + mm.toString() + "-" + "01";
+        }
+        return time;
+    }
+```
+
+
+
+**日期格式转换**
+
+```js
+// 日期格式转换
+    function dateFormat(fmt, date) {
+        let ret;
+        const opt = {
+            "Y+": date.getFullYear().toString(),        // 年
+            "m+": (date.getMonth() + 1).toString(),     // 月
+            "d+": date.getDate().toString(),            // 日
+            "H+": date.getHours().toString(),           // 时
+            "M+": date.getMinutes().toString(),         // 分
+            "S+": date.getSeconds().toString()          // 秒
+            // 有其他格式化字符需求可以继续添加，必须转化成字符串
+        };
+        for (let k in opt) {
+            ret = new RegExp("(" + k + ")").exec(fmt);
+            if (ret) {
+                fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
+            };
+        };
+        return fmt;
+    }
+```
+
+
+
+**获取当前页面排序**
+
+```js
+$("datagrid").datagrid("options").sortName;
+$("datagrid").datagrid("options").sortOrder;
+```
+
+
+
+**监听window.open关闭**
+
+```js
+var winObj = window.open('http://www.google.com','google','width=800,height=600,status=0,toolbar=0');
+var loop = setInterval(function() {   
+    if(winObj.closed) {  
+        clearInterval(loop);  
+        alert('closed');  
+    }  
+}, 1000);
+```
+
+
+
+**layer.confirm**
+
+```
+function shAll() {
+        layer.confirm("确认通过审核？",{
+            btn: ['确定', '取消'],
+            shadeClose: true
+        }, function (index) {
+            $.ajax({
+                url: '${ctx}/tuhao/tuhao/productNo/shAll.html',
+                type: 'post',
+                dataType: 'json',
+                data: {},
+                success: function (data) {
+                    var result = data.result;
+                    var message = data.msg;
+                    if (result) {
+                        layer.msg(message, {
+                            icon: 1, //图标
+                            time: 1500   //1.5秒关闭(如果不配置,默认是3秒)
+                        }, function () {
+                            window.$('#datagrid').datagrid('reload');
+                            // 关闭窗口
+                            x_admin_close();
+                        });
+                    } else {
+                        layer.msg(message, {icon: 2});
+                    }
+                }
+            });
+        });
+    }
+```
+
+
+
+**fmt:formatNumber去除千分位**
+
+```jstl
+增加属性：ingUsed="false"
 ```
